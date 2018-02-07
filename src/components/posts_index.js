@@ -4,11 +4,12 @@ import {fetchPosts} from '../actions'
 
 class PostsIndex extends Component {
     componentDidMount() {
-       let returnedposts = this.props.fetchPosts();
-        console.log(returnedposts);
+        this.props.fetchPosts();
+        console.log("component did mount");
     }
     
     render() {
+        console.log("test of this.props.posts inside render")
         console.log(this.props.posts)
         return (
             <div>
@@ -20,7 +21,7 @@ class PostsIndex extends Component {
 }
 
 function mapStateToProps(state){
-  return  { posts: state.posts};
+  return { posts: state.posts };
 }
 
-export default connect( mapStateToProps, {fetchPosts: fetchPosts})(PostsIndex);
+export default connect( mapStateToProps, { fetchPosts })(PostsIndex);
